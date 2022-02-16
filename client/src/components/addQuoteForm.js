@@ -1,11 +1,11 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 
-export default function AddQuoteForm() {
+export default function AddQuoteForm(props) {
 
     const { register, handleSubmit, formState: { errors } } = useForm({ mode: "all" });
     const onSubmit = (data) => {
-        console.log(data)
+        props.handlePosteQuote(data);
     }
 
     return (
@@ -13,24 +13,24 @@ export default function AddQuoteForm() {
             <form onSubmit={handleSubmit(onSubmit)}>
 
                 <div className="form-group">
-                    <label htmlFor="title">Title</label>
-                    <input name="title" type="text" placeholder="Title" className={errors.title ? "form-control is-invalid" : " form-control is-valid"}
-                        {...register("title",
+                    <label htmlFor="author">Author</label>
+                    <input name="author" type="text" placeholder="Author" className={errors.author ? "form-control is-invalid" : " form-control is-valid"}
+                        {...register("author",
                             {
                                 required: "Required field",
                                 minLength: {
                                     value: 3,
-                                    message: "Title should have at least 3 caracters"
+                                    message: "Author should have at least 3 caracters"
                                 },
                                 maxLength: {
                                     value: 10,
-                                    message: "Title should have at most 10 caracters"
+                                    message: "Author should have at most 10 caracters"
                                 }
                             })
                         }
                     />
-                    {errors.title && (
-                        <div className="invalid-feedback">{errors.title.message}</div>
+                    {errors.author && (
+                        <div className="invalid-feedback">{errors.author.message}</div>
                     )}
                 </div>
 
@@ -57,7 +57,7 @@ export default function AddQuoteForm() {
                 </div>
                 <div className="form-group d-flex justify-content-end p-2">
                     {
-                        errors.title || errors.quote ?
+                        errors.author || errors.quote ?
                             <button type="submit" className="btn btn-danger"><i className="fa fa-exclamation-circle" aria-hidden="true"></i> Error </button>
                             :
                             <button type="submit" className="btn btn-success"><i className="fa fa-user-plus"></i> Post new quote </button>
