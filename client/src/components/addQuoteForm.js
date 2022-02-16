@@ -3,9 +3,10 @@ import { useForm } from "react-hook-form";
 
 export default function AddQuoteForm(props) {
 
-    const { register, handleSubmit, formState: { errors } } = useForm({ mode: "all" });
+    const { register, handleSubmit, formState: { errors }, reset } = useForm({ mode: "all" });
     const onSubmit = (data) => {
         props.handlePosteQuote(data);
+        reset();
     }
 
     return (
@@ -23,8 +24,8 @@ export default function AddQuoteForm(props) {
                                     message: "Author should have at least 3 caracters"
                                 },
                                 maxLength: {
-                                    value: 10,
-                                    message: "Author should have at most 10 caracters"
+                                    value: 20,
+                                    message: "Author should have at most 20 caracters"
                                 }
                             })
                         }
@@ -45,8 +46,8 @@ export default function AddQuoteForm(props) {
                                     message: "Quote should have at least 3 caracters"
                                 },
                                 maxLength: {
-                                    value: 50,
-                                    message: "Quote should have at most 50 caracters"
+                                    value: 150,
+                                    message: "Quote should have at most 150 caracters"
                                 }
                             })
                         }

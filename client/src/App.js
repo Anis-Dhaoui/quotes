@@ -28,16 +28,19 @@ function App() {
   const updateQuote = (quoteId, body) =>{
     axios.put(`${url}quotes/${quoteId}`, body)
     .then(() => fetchData())
-    console.log(quoteId);
-    console.log(body);
   }
 
-  console.log(state)
+  // delete quote
+  const deleteQuote = (quoteId)=>{
+    axios.delete(`${url}quotes/${quoteId}`)
+    .then(() => fetchData())
+  }
+
   return (
     <div className="mt-5 mx-3">
       <AddQuoteForm handlePosteQuote={(quote) => postQuote(quote)} handleUpdate={(id, body) => updateQuote(id, body)} />
       <br /><hr /><br />
-      <RenderTasks quotes={state} handleUpdate={(id, body) => updateQuote(id, body)} />
+      <RenderTasks quotes={state} handleUpdate={(id, body) => updateQuote(id, body)} handleDelete={(id) => deleteQuote(id)} />
     </div>
   );
 }

@@ -4,11 +4,11 @@ import { useForm } from "react-hook-form";
 
 export default function RenderTasks(props) {
 
-        // Edit button clicked or not if yes the editMode state will take the id of the comment
-        const [editMode, setEditMode] = useState("");
+    // Edit button clicked or not if yes the editMode state will take the id of the comment
+    const [editMode, setEditMode] = useState("");
     const { register, handleSubmit } = useForm({ mode: "all" });
+
     const onSubmit = (data) => {
-        // console.log(data, editMode);
         props.handleUpdate(editMode, data);
         setEditMode("");
     }
@@ -22,7 +22,7 @@ export default function RenderTasks(props) {
                         {
                             editMode === item._id ?
                                 <form onSubmit={handleSubmit(onSubmit)}>
-                                    <textarea rows={5} name="quote" type="textarea" placeholder={item.quote}
+                                    <textarea rows={5} name="quote" type="textarea" defaultValue={item.quote}
                                         {...register("quote")}
                                     />
                                     <button type="submit" style={{ marginRight: "2px" }} className="btn btn-success">Done</button>
@@ -35,7 +35,7 @@ export default function RenderTasks(props) {
                     </CardBody>
                     <CardFooter>
                         <div className='row'>
-                            <Button className='btn-danger col-6' style={{ marginRight: "2px" }}>Remove</Button>
+                            <Button onClick={() => props.handleDelete(item._id)} className='btn-danger col-6' style={{ marginRight: "2px" }}>Remove</Button>
                             <Button onClick={() => setEditMode(item._id)} className='btn-success col'>Edit</Button>
                         </div>
                     </CardFooter>
