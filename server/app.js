@@ -5,8 +5,6 @@ var mongoose = require('mongoose');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var quoteRouter = require('./routes/quoteRouter');
 
 // Connecting with Mongodb Server
@@ -29,8 +27,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/quotes', quoteRouter);
 
 // catch 404 and forward to error handler
