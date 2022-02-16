@@ -24,13 +24,20 @@ function App() {
     .then(() => fetchData())
   }
 
+  // Update quote
+  const updateQuote = (quoteId, body) =>{
+    axios.put(`${url}quotes/${quoteId}`, body)
+    .then(() => fetchData())
+    console.log(quoteId);
+    console.log(body);
+  }
 
   console.log(state)
   return (
     <div className="mt-5 mx-3">
-      <AddQuoteForm handlePosteQuote={(quote) => postQuote(quote)} />
+      <AddQuoteForm handlePosteQuote={(quote) => postQuote(quote)} handleUpdate={(id, body) => updateQuote(id, body)} />
       <br /><hr /><br />
-      <RenderTasks quotes={state} />
+      <RenderTasks quotes={state} handleUpdate={(id, body) => updateQuote(id, body)} />
     </div>
   );
 }

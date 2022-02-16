@@ -45,8 +45,8 @@ export default function AddQuoteForm(props) {
                                     message: "Quote should have at least 3 caracters"
                                 },
                                 maxLength: {
-                                    value: 30,
-                                    message: "Quote should have at most 10 caracters"
+                                    value: 50,
+                                    message: "Quote should have at most 50 caracters"
                                 }
                             })
                         }
