@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 
 export default function RenderTasks(props) {
 
-    // Edit button clicked or not if yes the editMode state will take the id of the comment
+    // Edit button clicked or not if yes the editMode state will take the id of the quote
     const [editMode, setEditMode] = useState("");
     const { register, handleSubmit } = useForm({ mode: "all" });
 
