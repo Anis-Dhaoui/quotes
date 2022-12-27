@@ -15,7 +15,7 @@ mongoose.Promise = global.Promise;
 // const connect = mongoose.connect(process.env.MONGODB_URI || url);
 const connect = mongoose.connect(process.env.MONGODB_URI);
 connect.then((db) => {
-  console.log("Connected to Mongodb Server Correctly...");
+  console.log("Connected to Mongodb Server Correctly To: ", process.env.MONGODB_URI);
 }, (err) => console.log(err));
 
 var app = express();
