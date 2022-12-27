@@ -38,9 +38,9 @@ function App() {
 
   return (
     <div className="mt-5 mx-3">
+      <h1 className="text-center">QUOTES</h1>
       <AddQuoteForm handlePosteQuote={(quote) => postQuote(quote)} handleUpdate={(id, body) => updateQuote(id, body)} />
       <br /><hr /><br />
-      <h1>QUOTES</h1>
       <RenderTasks quotes={state} handleUpdate={(id, body) => updateQuote(id, body)} handleDelete={(id) => deleteQuote(id)} />
     </div>
   );
